@@ -19,7 +19,7 @@
     <th>City</th>
     <th>Marks</th>
     <th>Passing Year</th>
-    {% for students in student %}
+    {% comment %} {% for students in student %}
     <tr>
         <td>{{students.id}}</td>
         <td>{{students.name}}</td>
@@ -28,7 +28,15 @@
         <td>{{students.marks}}</td>
         <td>{{students.passing_date}}</td>
     </tr>
-    {% endfor %}
+    {% endfor %} {% endcomment %}
+    <tr>
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.rollnumber}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.marks}}</td>
+        <td>{{student.passing_date}}</td>
+    </tr>
 </table>
 </body>
 </html>
