@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,tr,td {
+            border:1px solid black
+        }
+    </style>
+</head>
+<body>
+    <table>
+    <h3>Student Information</h3>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>City</th>
+    <th>Marks</th>
+    <th>Passing Year</th>
+    {% for students in student %}
+    <tr>
+        <td>{{students.id}}</td>
+        <td>{{students.name}}</td>
+        <td>{{students.rollnumber}}</td>
+        <td>{{students.city}}</td>
+        <td>{{students.marks}}</td>
+        <td>{{students.passing_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
