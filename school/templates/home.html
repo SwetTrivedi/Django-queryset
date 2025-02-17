@@ -19,6 +19,31 @@
     <th>City</th>
     <th>Marks</th>
     <th>Passing Year</th>
+  {% comment %} {% for students in student %}
+    <tr>
+        <td>{{students.id}}</td>
+        <td>{{students.name}}</td>
+        <td>{{students.rollnumber}}</td>
+        <td>{{students.city}}</td>
+        <td>{{students.marks}}</td>
+        <td>{{students.passing_date}}</td>
+    </tr>
+    {% endfor %} {% endcomment %}
+
+
+    {% comment %} <tr>
+        <td>{{student.id}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.rollnumber}}</td>
+        <td>{{student.city}}</td>
+        <td>{{student.marks}}</td>
+        <td>{{student.passing_date}}</td>
+    </tr> {% endcomment %}
+
+
+
+{% comment %} ############ This is filter lookups ########### {% endcomment %}
+
     {% comment %} {% for students in student %}
     <tr>
         <td>{{students.id}}</td>
@@ -29,6 +54,10 @@
         <td>{{students.passing_date}}</td>
     </tr>
     {% endfor %} {% endcomment %}
+
+{% comment %} ############  This is aggregation ############## {% endcomment %}
+
+    {% for student in students %}
     <tr>
         <td>{{student.id}}</td>
         <td>{{student.name}}</td>
@@ -37,6 +66,22 @@
         <td>{{student.marks}}</td>
         <td>{{student.passing_date}}</td>
     </tr>
-</table>
+    {% endfor %}
+
+</table><hr>
+<h3>Average Data {{average}}</h3>
+<h3>Average {{average.marks__avg}}</h3><hr>
+
+<h3>Minimum Data {{minimum}}</h3>
+<h3>Minimum {{minimum.marks__min}}</h3><hr>
+
+<h3>Maximum Data {{maximum}}</h3>
+<h3>Maximum {{maximum.marks__max}}</h3><hr>
+
+<h3>Sum Data {{total}}</h3>
+<h3>Sum {{total.marks__sum}}</h3><hr>
+
+<h3>Count Data {{totalcount}}</h3>
+<h3>Count {{totalcount.marks__count}}</h3><hr>
 </body>
 </html>

@@ -2,10 +2,10 @@ from django.shortcuts import render
 from .models import Student
 from .models import Teacher
 # Create your views here.
-def home(request):
-    student_data=Student.objects.all()
-    a=type(student_data)
-    print(a)
+# def home(request):
+    # student_data=Student.objects.all()
+    # a=type(student_data)
+    # print(a)
     # student_data=Student.objects.filter(marks=90)
 
     # student_data=Student.objects.exclude(marks=90)
@@ -22,9 +22,9 @@ def home(request):
     # student_data=Student.objects.values_list('id','name',named=True)
 
     # student_data=Student.objects.dates('passing_date','month')
-    print("Return :",student_data)
-    print("sql :",student_data.query )
-    return render(request,'home.html',{'student':student_data})
+    # print("Return :",student_data)
+    # print("sql :",student_data.query )
+    # return render(request,'home.html',{'student':student_data})
 
 
 
@@ -140,9 +140,56 @@ def home(request):
 
 
 
+################################################################################################################################################
 
 
+######################  Field lookups   ##############################################
 
+# def home(request):
+    # student_data=Student.objects.all()
+    # student_data=Student.objects.filter(name__exact='swet')
+    # student_data=Student.objects.filter(name__iexact='Swet')
+    # student_data=Student.objects.filter(name__contains='s')
+    # student_data=Student.objects.filter(name__icontains='S')
+    # student_data=Student.objects.filter(id__in=[1,5,7])
+    # student_data=Student.objects.filter(marks__in=[80])
+    # student_data=Student.objects.filter(marks__in=[80,90])
+    # student_data=Student.objects.filter(marks__gt=60)
+    # student_data=Student.objects.filter(marks__gte=60)
+    # student_data=Student.objects.filter(marks__lt=90)
+    # student_data=Student.objects.filter(marks__lte=90)
+    # student_data=Student.objects.filter(name__startswith='s')
+    # student_data=Student.objects.filter(name__istartswith='S')
+    # student_data=Student.objects.filter(name__endswith='r')
+    # student_data=Student.objects.filter(name__iendswith='R')
+    # student_data=Student.objects.filter(passingdate_range=('2024-04-01','2025-01-01'))
+
+    # print("Return :",student_data)
+    # print("sql :",student_data.query )
+    # return render(request,'home.html',{'student':student_data})
+
+
+#############################################################################################################################################
+
+
+##################  Aggregation  ########################
+
+from django.db.models import Avg,Sum,Min,Max,Count
+
+def home(request):
+    student_data=Student.objects.all()
+    average=student_data.aggregate(Avg('marks'))
+    total=student_data.aggregate(Sum('marks'))
+    minimum=student_data.aggregate(Min('marks'))
+    maximum=student_data.aggregate(Max('marks'))
+    totalcount=student_data.aggregate(Count('marks'))
+
+
+    context={'students':student_data,'average':average,'total':total,'minimum':minimum
+             ,'maximum':maximum,'totalcount':totalcount}
+    print("Return :",student_data)
+    print("sql :",student_data.query )
+    return render(request,'home.html',context)
 
 
 
