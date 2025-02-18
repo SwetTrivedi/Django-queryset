@@ -57,7 +57,7 @@
 
 {% comment %} ############  This is aggregation ############## {% endcomment %}
 
-    {% for student in students %}
+    {% comment %} {% for student in students %}
     <tr>
         <td>{{student.id}}</td>
         <td>{{student.name}}</td>
@@ -82,6 +82,21 @@
 <h3>Sum {{total.marks__sum}}</h3><hr>
 
 <h3>Count Data {{totalcount}}</h3>
-<h3>Count {{totalcount.marks__count}}</h3><hr>
+<h3>Count {{totalcount.marks__count}}</h3><hr> {% endcomment %}
+
+
+
+{% comment %} This is Q objects {% endcomment %}
+
+{% for student in students %}
+<tr>
+    <td>{{student.id}}</td>
+    <td>{{student.name}}</td>
+    <td>{{student.rollnumber}}</td>
+    <td>{{student.city}}</td>
+    <td>{{student.marks}}</td>
+    <td>{{student.passing_date}}</td>
+{% endfor %}
+</tr>
 </body>
 </html>

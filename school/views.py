@@ -174,22 +174,59 @@ from .models import Teacher
 
 ##################  Aggregation  ########################
 
-from django.db.models import Avg,Sum,Min,Max,Count
+# from django.db.models import Avg,Sum,Min,Max,Count
 
+# def home(request):
+#     student_data=Student.objects.all()
+#     average=student_data.aggregate(Avg('marks'))
+#     total=student_data.aggregate(Sum('marks'))
+#     minimum=student_data.aggregate(Min('marks'))
+#     maximum=student_data.aggregate(Max('marks'))
+#     totalcount=student_data.aggregate(Count('marks'))
+
+
+#     context={'students':student_data,'average':average,'total':total,'minimum':minimum
+#              ,'maximum':maximum,'totalcount':totalcount}
+#     print("Return :",student_data)
+#     print("sql :",student_data.query )
+#     return render(request,'home.html',context)
+
+
+
+#######################################################################################################################################################
+
+
+
+#####################  Q object   ############################
+
+
+# from django.db.models import Q
+
+# def home(request):
+#     student_data=Student.objects.filter(Q(id=6) & Q(rollnumber=106))
+#     student_data=Student.objects.filter(Q(id=6) | Q(rollnumber=107))
+#     student_data=Student.objects.filter(~Q(id=6))
+#     print("Return :",student_data)
+#     print("sql :",student_data.query )
+#     return render(request,'home.html',{'students':student_data})
+
+
+
+###############################################################################################################################################################
+
+############################  limiting querysets  ####################
 def home(request):
-    student_data=Student.objects.all()
-    average=student_data.aggregate(Avg('marks'))
-    total=student_data.aggregate(Sum('marks'))
-    minimum=student_data.aggregate(Min('marks'))
-    maximum=student_data.aggregate(Max('marks'))
-    totalcount=student_data.aggregate(Count('marks'))
+    student_data=Student.objects.all()[:5]
 
+    # student_data=Student.objects.all()[5:9]
 
-    context={'students':student_data,'average':average,'total':total,'minimum':minimum
-             ,'maximum':maximum,'totalcount':totalcount}
+    # student_data=Student.objects.all()[:5:2]
+
+    # student_data=Student.objects.all()[:5:2]
+
     print("Return :",student_data)
     print("sql :",student_data.query )
-    return render(request,'home.html',context)
+    return render(request,'home.html',{'students':student_data})
 
 
 
@@ -222,6 +259,28 @@ def home(request):
 
 
 
+
+
+
+
+
+
+
+
+
+# Today I Learned About :-
+
+# 1. Q object in queryset which is support the ( AND , OR , Not  operations ),
+
+# 2. Limiting In queryset if we want the specific number of  data then we use limiting .
+
+# 3. Model Inheritance and types of Model Inheritance
+
+# 4. Abstract Base class Inheritance Which is store the multiple common fields to multiple comman class 
+
+# 5. Multi-table Inheritance which is Base class table will be create childclass
+
+# 6. Proxy Model Which is same table but behaviour will be different
 
 
 
